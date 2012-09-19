@@ -1,20 +1,10 @@
 window.onload = function () {
-	var xcur = 0, ycur = 0, heightfortest, widthfortest;
+	var xcur = 0, ycur = 0;
 	var closebut = document.getElementById('close');
-	function test() {
-		if (xcur != 0 || ycur != 0) {
-			heightfortest = touch.clientHeight / 2;
-			widthfortest = touch.clientWidth / 2;
-		}
-		else {
-			heightfortest = xcur;
-			widthfortest = ycur;
-		}
-	}
 	var touch = document.getElementById('touch'),
 		touchHelper = {
-		width: widthfortest + 'px',
-		height: heightfortest + 'px'
+		width: xcur,
+		height: ycur
 		};
 
 	function onmove(coor){ 
@@ -23,6 +13,8 @@ window.onload = function () {
 	   xcur = coor.pageX;
 	   
 	   touch.onmousedown = function () {
+		   	touchHelper.width = xcur;
+			touchHelper.height = ycur;
 			touchHelper.active = true;
 			
 			return false;		
